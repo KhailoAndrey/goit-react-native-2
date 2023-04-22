@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Alert, Button, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import PropTypes from 'prop-types';
 
-export default function LoginScreen() {
-    const [name, setName] = useState("");
+export default function LoginScreen({ setIsLogged }) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
 
@@ -11,23 +11,24 @@ export default function LoginScreen() {
     const mailHandler = (password) => setEmail(password);
 
     const onLogin = () => {
-        if (name === '' || password === '' || email === '') {
+        if ( password === '' || email === '') {
             return Alert.alert("Все поля должны быть заполнены")
         }
-        Alert.alert("Credentials", `${name} + ${email} + ${password}`);
+        Alert.alert("Credentials", `${email} + ${password}`);
     };
 
+    const linkToRegitryScreen = () => {
+        setIsLogged(true)
+    }
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"}
                 >
-
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Войти</Text>
-                    </View>
-                    
+                    </View>                    
                     <TextInput
                         value={email}
                         onChangeText={mailHandler}
@@ -42,9 +43,9 @@ export default function LoginScreen() {
                         style={styles.input}
                     />
                     <TouchableOpacity activeOpacity={0.2} style={styles.button}>
-                    <Button title={"Войти"} onPress={onLogin} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={<LoginScreen/>}>
+                    <Text style={styles.buttonText} onPress={onLogin}>Войти</Text>
+                                        </TouchableOpacity>
+                    <TouchableOpacity onPress={linkToRegitryScreen}>
                     <Text style={styles.linkText}>Нет аккаунта? Зарегистрироваться</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
@@ -54,18 +55,31 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+    titleBox: {
+        marginBottom: 32,
+        marginTop: 32,
+    },
     title: {
         fontSize: 30,
+        fontWeight: '500',
         textAlign: 'center'
     },
-    titleBox: {
-        marginBottom: 30,
+    buttonText: {
+        textAlign: 'center',
+        fontSize: 16,
+        fontWeight: '400',
+        alignItems: 'center',
+        lineHeight: 19,
+        color: '#fff'
     },
     container: {
+        padding: 0,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        position: 'absolute',
+        bottom: 0,
         width: '100%',
-        height: 550,
-        marginTop: 260,
-        // flex: 1,
+        height: 490,
         alignItems: "center",
         justifyContent: "center",
         ...Platform.select({
@@ -94,11 +108,25 @@ const styles = StyleSheet.create({
 
     },
     button: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: 343,
+        height: 52,
+        marginTop: 40,
+        padding: 16,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
+        alignItems: 'center',
     },
     linkText: {
         textAlign: 'center',
-        marginTop: 16
+        marginTop: 16,
+        color: '#1B4371',
+        fontSize: 16,
+        fontWeight: '400',
     },
 });
+
+LoginScreen.propTypes = {
+    setIsLogged: PropTypes.func.isRequired
+}

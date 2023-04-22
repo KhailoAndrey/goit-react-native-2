@@ -8,12 +8,13 @@ import {
     KeyboardAvoidingView,
     Platform,
     Alert,
-    Text, 
+    Text,
     TouchableOpacity,
+    Image,
 } from "react-native";
-import LoginScreen from "./LoginScreen";
+import PropTypes from 'prop-types';
 
-export default function App() {
+export default function RegistrationScreen({ setIsLogged }) {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
@@ -21,78 +22,113 @@ export default function App() {
     const nameHandler = (name) => setName(name);
     const passwordHandler = (email) => setPassword(email);
     const mailHandler = (password) => setEmail(password);
+    const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
     const onLogin = () => {
         if (name === '' || password === '' || email === '') {
             return Alert.alert("Все поля должны быть заполнены")
         }
         Alert.alert("Credentials", `${name} + ${email} + ${password}`);
+   console.log('name: ', {name})
     };
 
     const linkToLoginScreen = () => {
-        <LoginScreen />
+        setIsLogged(false)
     }
+    const handlePress = () => {
+        // setIsShowKeyboard(false);
+        Keyboard.dismiss();
+    };
 
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <KeyboardAvoidingView
-                behavior={Platform.OS == "ios" ? "padding" : "height"}
-            >
-                <View style={styles.container}>
+        <TouchableWithoutFeedback onPress={handlePress} >
+            <View style={styles.container} >
+                <KeyboardAvoidingView
+                    behavior={Platform.OS == "ios" ? "padding" : "height"}
+                >
+                    <View style={styles.photo} >
+                        <Image style={styles.addPhoto} source={require('./Images/add.jpg')} />
+                    </View>
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Регистрация</Text>
                     </View>
-                    <TextInput
-                        value={name}
-                        onChangeText={nameHandler}
-                        placeholder="Логин"
-                        style={styles.input}
-                    />
-                    <TextInput
-                        value={email}
-                        onChangeText={mailHandler}
-                        placeholder="Адрес электронной почты"
-                        style={styles.input}
-                    />
-                    <TextInput
-                        value={password}
-                        onChangeText={passwordHandler}
-                        placeholder="Пароль"
-                        secureTextEntry={true}
-                        style={styles.input}
-                    />
+                    <View>
+                        <TextInput
+                            value={name}
+                            onChangeText={nameHandler}
+                            placeholder="Логин"
+                            style={styles.input}
+                            onFocus={() => { setIsShowKeyboard(true) }}
+                        />
+                        <TextInput
+                            value={email}
+                            onChangeText={mailHandler}
+                            placeholder="Адрес электронной почты"
+                            style={styles.input}
+                        />
+                        <TextInput
+                            value={password}
+                            onChangeText={passwordHandler}
+                            placeholder="Пароль"
+                            secureTextEntry={true}
+                            style={styles.input}
+                        />
+                    </View>
                     <TouchableOpacity activeOpacity={0.2} style={styles.button}>
                         <Text style={styles.buttonText} onPress={onLogin}>Зарегистрироваться</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={linkToLoginScreen}>
                         <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
                     </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
+                </KeyboardAvoidingView>
+            </View>
         </TouchableWithoutFeedback>
     );
 }
 
 const styles = StyleSheet.create({
+    photo: {
+        width: 120,
+        height: 120,
+        backgroundColor: '#F6F6F6',
+        borderRadius: 16,
+        position: 'absolute',
+        left: '30%',
+        top: '-20%',
+        zIndex: 100,
+    },
+    addPhoto: {
+        position: 'absolute',
+        width: 25,
+        height: 25,
+        right: -12.5,
+        bottom: 14,
+
+    },
     title: {
         fontSize: 30,
+        fontWeight: '500',
         textAlign: 'center'
     },
     buttonText: {
         textAlign: 'center',
         fontSize: 16,
-            },
+        fontWeight: '400',
+        alignItems: 'center',
+        lineHeight: 19,
+        color: '#fff'
+    },
     titleBox: {
         marginBottom: 30,
         marginTop: 90,
     },
     container: {
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
         position: 'absolute',
         bottom: 0,
         width: '100%',
         height: 550,
-        // marginTop: 145,
-        // flex: 1,
         alignItems: "center",
         justifyContent: "center",
         ...Platform.select({
@@ -121,15 +157,25 @@ const styles = StyleSheet.create({
 
     },
     button: {
+        display: 'flex',
+        flexDirection: 'column',
         width: 343,
-        height: 50,
+        height: 52,
         marginTop: 40,
+        padding: 16,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
         alignItems: 'center',
     },
     linkText: {
         textAlign: 'center',
-        marginTop: 16
+        marginTop: 16,
+        color: '#1B4371',
+        fontSize: 16,
+        fontWeight: '400',
     },
 });
+
+RegistrationScreen.propTypes = {
+    setIsLogged: PropTypes.func.isRequired
+}
