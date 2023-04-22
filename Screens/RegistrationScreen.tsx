@@ -8,15 +8,10 @@ import {
     KeyboardAvoidingView,
     Platform,
     Alert,
-    Button,
-    Text,
-    Image,
-    ImageBackground,
+    Text, 
     TouchableOpacity,
 } from "react-native";
 import LoginScreen from "./LoginScreen";
-// import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
 
 export default function App() {
     const [name, setName] = useState("");
@@ -34,13 +29,16 @@ export default function App() {
         Alert.alert("Credentials", `${name} + ${email} + ${password}`);
     };
 
+    const linkToLoginScreen = () => {
+        <LoginScreen />
+    }
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.container}>
-                <KeyboardAvoidingView
-                    behavior={Platform.OS == "ios" ? "padding" : "height"}
-                >
-
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "ios" ? "padding" : "height"}
+            >
+                <View style={styles.container}>
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Регистрация</Text>
                     </View>
@@ -63,12 +61,14 @@ export default function App() {
                         secureTextEntry={true}
                         style={styles.input}
                     />
-                    <Button title={"Зарегистрироваться"} onPress={onLogin} />
-                    <TouchableOpacity onPress={<LoginScreen/>}>
-                    <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+                    <TouchableOpacity activeOpacity={0.2} style={styles.button}>
+                        <Text style={styles.buttonText} onPress={onLogin}>Зарегистрироваться</Text>
                     </TouchableOpacity>
-                </KeyboardAvoidingView>
-            </View>
+                    <TouchableOpacity onPress={linkToLoginScreen}>
+                        <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+                    </TouchableOpacity>
+                </View>
+            </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     );
 }
@@ -78,13 +78,20 @@ const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'center'
     },
+    buttonText: {
+        textAlign: 'center',
+        fontSize: 16,
+            },
     titleBox: {
         marginBottom: 30,
+        marginTop: 90,
     },
     container: {
+        position: 'absolute',
+        bottom: 0,
         width: '100%',
         height: 550,
-        marginTop: 260,
+        // marginTop: 145,
         // flex: 1,
         alignItems: "center",
         justifyContent: "center",
@@ -114,8 +121,12 @@ const styles = StyleSheet.create({
 
     },
     button: {
+        width: 343,
+        height: 50,
+        marginTop: 40,
         backgroundColor: '#FF6C00',
         borderRadius: 100,
+        alignItems: 'center',
     },
     linkText: {
         textAlign: 'center',
