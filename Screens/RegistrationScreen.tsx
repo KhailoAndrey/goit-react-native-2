@@ -10,7 +10,13 @@ import {
     Alert,
     Button,
     Text,
+    Image,
+    ImageBackground,
+    TouchableOpacity,
 } from "react-native";
+import LoginScreen from "./LoginScreen";
+// import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 export default function App() {
     const [name, setName] = useState("");
@@ -34,6 +40,7 @@ export default function App() {
                 <KeyboardAvoidingView
                     behavior={Platform.OS == "ios" ? "padding" : "height"}
                 >
+
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Регистрация</Text>
                     </View>
@@ -57,6 +64,9 @@ export default function App() {
                         style={styles.input}
                     />
                     <Button title={"Зарегистрироваться"} onPress={onLogin} />
+                    <TouchableOpacity onPress={<LoginScreen/>}>
+                    <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+                    </TouchableOpacity>
                 </KeyboardAvoidingView>
             </View>
         </TouchableWithoutFeedback>
@@ -72,7 +82,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     container: {
-        width: 375,
+        width: '100%',
         height: 550,
         marginTop: 260,
         // flex: 1,
@@ -80,10 +90,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         ...Platform.select({
             ios: {
-                backgroundColor: '#000000'
+                backgroundColor: '#000'
             },
             android: {
-                backgroundColor: '#878b86'
+                backgroundColor: '#fff'
             },
         }),
     },
@@ -92,7 +102,23 @@ const styles = StyleSheet.create({
         height: 50,
         padding: 10,
         borderWidth: 1,
-        borderColor: "black",
+        borderColor: "#e8e8e8",
+        backgroundColor: '#f6f6f6',
         marginBottom: 10,
+        borderRadius: 8,
+        shadowOpacity: 0.25,
+        shadowColor: '#000',
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 4,
+
+    },
+    button: {
+        backgroundColor: '#FF6C00',
+        borderRadius: 100,
+    },
+    linkText: {
+        textAlign: 'center',
+        marginTop: 16
     },
 });
