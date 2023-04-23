@@ -44,7 +44,7 @@ export default function RegistrationScreen({ setIsLogged }) {
         <TouchableWithoutFeedback onPress={handlePress} >
             <View style={styles.container} >
                 <KeyboardAvoidingView
-                    behavior={Platform.OS == "ios" ? "padding" : "height"}
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
                 >
                     <View style={styles.photo} >
                         <Image style={styles.addPhoto} source={require('./Images/add.jpg')} />
