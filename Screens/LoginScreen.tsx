@@ -24,7 +24,7 @@ export default function LoginScreen({ setIsLogged }) {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
                 <KeyboardAvoidingView
-                    behavior={Platform.OS == "ios" ? "padding" : "height"}
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
                 >
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Войти</Text>
