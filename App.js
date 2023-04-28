@@ -5,7 +5,9 @@ import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
+const MainStack = createStackNavigator();
 export default function App() {
   const [isLogged, setIsLogged] = useState(true);
 
@@ -17,11 +19,14 @@ export default function App() {
       <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
         style={{ width: '100%', height: '100%' }}
         >
+          <MainStack.Naviator initialRouteName="Login">
+
         {isLogged ?
-          <RegistrationScreen setIsLogged={setIsLogged}/> :
-          <LoginScreen setIsLogged={setIsLogged}/>
+          <MainStack.Screen name="Registration" component={RegistrationScreen} setIsLogged={setIsLogged} />:
+          <MainStack.Screen name="Login" component={LoginScreen} setIsLogged={setIsLogged} />
         }
 
+        </MainStack.Naviator>
       </ImageBackground>
     </View>
         </NavigationContainer>
