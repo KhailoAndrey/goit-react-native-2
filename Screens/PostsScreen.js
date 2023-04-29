@@ -1,7 +1,27 @@
 import { StatusBar } from 'expo-status-bar'
 import { View, Text, StyleSheet, Image } from 'react-native'
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Feather } from '@expo/vector-icons';
 
-export function PostsScreen() {
+const Tabs = createBottomTabNavigator();
+
+// function Settings() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Text>Settings!</Text>
+//     </View>
+//   );
+// }
+
+// function Profile() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Text>Profile!</Text>
+//     </View>
+//   );
+// }
+
+export default function PostsScreen() {
     <StatusBar style="auto" />
 
     return (
@@ -19,6 +39,31 @@ export function PostsScreen() {
                     <Text style={styles.userInfoText}>User name</Text>    
                     <Text style={styles.userInfoMail}>User e-mail</Text>    
                 </View>
+            </View>
+            <View style={ styles.footer}>
+{/* <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === "Profile") {
+            iconName = focused
+              ? "ios-information-circle"
+              : "ios-information-circle-outline";
+          } else if (route.name === "Settings") {
+            iconName = focused ? "ios-list-box" : "ios-list";
+          }
+          return <Feather name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: "tomato",
+        inactiveTintColor: "gray",
+      }}
+    >
+      <Tabs.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Tabs.Screen name="CommentsScreen" component={CommentsScreen} />
+    </Tabs.Navigator> */}
             </View>
         </View>
     )
@@ -74,4 +119,12 @@ const styles = StyleSheet.create({
         fontWeight: '400',        
         fontSize: 11
     },
+    footer: {
+        borderTopWidth: 1,
+        borderTopColor: 'rgba(0,0,0,0.3)',
+        width: '100%',
+        height: 83,                
+        position: 'absolute',
+        bottom: 0,
+    }
 })

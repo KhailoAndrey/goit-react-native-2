@@ -41,7 +41,8 @@ export default function App() {
             component={RegistrationScreen}
           options={{ title: 'Регистрация' }} />
         
-        <MainStack.Screen name="Home" component={Home} options={{headerShown: false}} />
+        <MainStack.Screen name="Home" component={Home}
+          options={{ headerShown: false }} />
       </MainStack.Navigator>
 
     </NavigationContainer>

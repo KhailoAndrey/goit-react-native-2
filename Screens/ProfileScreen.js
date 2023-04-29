@@ -1,5 +1,5 @@
 
-export function ProfileScreen() { 
+export default function ProfileScreen() { 
 
     return (
         <View></View>
