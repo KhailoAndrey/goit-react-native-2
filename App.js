@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  ImageBackground, Keyboard, KeyboardAvoidingView, Platform,
+  StyleSheet, Text, TouchableWithoutFeedback, View
+} from 'react-native';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Home } from './Screens/Home';
 
 const MainStack = createStackNavigator();
 export default function App() {
@@ -13,27 +17,32 @@ export default function App() {
 
   return (
     <NavigationContainer>
-    
-    <View style={styles.container}>
+
+      {/* <View style={styles.container}>
         <StatusBar style="auto" />
         <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
           style={{ width: '100%', height: '100%' }}
         >
-          
+
         </ImageBackground>
-      </View>
-          <MainStack.Navigator initialRouteName="LoginScreen">
-        <MainStack.Screen name="RegistrationScreen"
-          component={RegistrationScreen}
-          options={{ title: 'Регистрация' }} />
+      </View> */}
+      <MainStack.Navigator initialRouteName="LoginScreen">
+
         <MainStack.Screen name="LoginScreen"
           component={LoginScreen}
           options={{
+            headerShown: false,
             title: 'Войти',
             headerTitleAlign: 'center',
             headerTitleStyle: { fontSize: 30 },
           }} />
-          </MainStack.Navigator>
+        
+          <MainStack.Screen name="RegistrationScreen"
+            component={RegistrationScreen}
+          options={{ title: 'Регистрация' }} />
+        
+        <MainStack.Screen name="Home" component={Home} options={{headerShown: false}} />
+      </MainStack.Navigator>
 
     </NavigationContainer>
 

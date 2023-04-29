@@ -77,13 +77,13 @@ export default function RegistrationScreen() {
                             style={styles.input}
                         />
                     </View>
+                </KeyboardAvoidingView>
                     <TouchableOpacity activeOpacity={0.2} style={styles.button}>
                         <Text style={styles.buttonText} onPress={onLogin}>Зарегистрироваться</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={linkToLoginScreen}>
                         <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
                     </TouchableOpacity>
-                </KeyboardAvoidingView>
             </View>
         </TouchableWithoutFeedback>
     );

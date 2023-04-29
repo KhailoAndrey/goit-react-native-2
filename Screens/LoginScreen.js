@@ -1,7 +1,10 @@
 // import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import {
+    Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet,
+    Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View,ImageBackground
+} from "react-native";
 // import PropTypes from 'prop-types';
 
 export default function LoginScreen() {
@@ -16,7 +19,8 @@ export default function LoginScreen() {
         if (password === '' || email === '') {
             return Alert.alert("Все поля должны быть заполнены")
         }
-        Alert.alert("Credentials", `${email} + ${password}`);
+        // Alert.alert("Credentials", `${email} + ${password}`);
+        navigation.navigate("Home")
     };
 
     const linkToRegitryScreen = () => {
@@ -24,9 +28,12 @@ export default function LoginScreen() {
     }
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ImageBackground source={require('./Images/PhotoBG.jpg')}
+          style={{ width: '100%', height: '100%' }}
+        >
             <View style={styles.container}>
                 <KeyboardAvoidingView
-                    behavior={Platform.OS === "ios" ? "padding" : "height"}
+                    behavior={Platform.OS === "ios" ? "padding" : ""}
                 >
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Войти</Text>
@@ -44,14 +51,16 @@ export default function LoginScreen() {
                         secureTextEntry={true}
                         style={styles.input}
                     />
+                    </KeyboardAvoidingView>
                     <TouchableOpacity activeOpacity={0.2} style={styles.button}>
                         <Text style={styles.buttonText} onPress={onLogin}>Войти</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={linkToRegitryScreen}>
                         <Text style={styles.linkText}>Нет аккаунта? Зарегистрироваться</Text>
                     </TouchableOpacity>
-                </KeyboardAvoidingView>
             </View>
+                            </ImageBackground>
+
         </TouchableWithoutFeedback>
     );
 }
@@ -75,6 +84,7 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     container: {
+        margin: 0,
         padding: 0,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
