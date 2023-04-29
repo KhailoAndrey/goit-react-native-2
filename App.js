@@ -19,14 +19,14 @@ export default function App() {
       <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
         style={{ width: '100%', height: '100%' }}
         >
-          <MainStack.Naviator initialRouteName="Login">
+          <MainStack.Navigator initialRouteName="Login">
 
-        {isLogged ?
-          <MainStack.Screen name="Registration" component={RegistrationScreen} setIsLogged={setIsLogged} />:
-          <MainStack.Screen name="Login" component={LoginScreen} setIsLogged={setIsLogged} />
-        }
+        
+          <MainStack.Screen name="Registration" component={RegistrationScreen} />
+          <MainStack.Screen name="Login" component={LoginScreen} />
+        
 
-        </MainStack.Naviator>
+        </MainStack.Navigator>
       </ImageBackground>
     </View>
         </NavigationContainer>

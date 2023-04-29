@@ -12,9 +12,9 @@ import {
     TouchableOpacity,
     Image,
 } from "react-native";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-export default function RegistrationScreen({ setIsLogged }) {
+export default function RegistrationScreen({ navigation }) {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
@@ -33,7 +33,7 @@ export default function RegistrationScreen({ setIsLogged }) {
     };
 
     const linkToLoginScreen = () => {
-        setIsLogged(false)
+        navigation.navigate("LoginScreen")
     }
     const handlePress = () => {
         // setIsShowKeyboard(false);
@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
     },
 });
 
-RegistrationScreen.propTypes = {
-    setIsLogged: PropTypes.func.isRequired
-}
+// RegistrationScreen.propTypes = {
+//     setIsLogged: PropTypes.func.isRequired
+// }

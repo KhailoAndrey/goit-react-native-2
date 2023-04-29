@@ -1,9 +1,9 @@
 // import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-export default function LoginScreen({ setIsLogged }) {
+export default function LoginScreen({ navigation }) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
 
@@ -18,7 +18,7 @@ export default function LoginScreen({ setIsLogged }) {
     };
 
     const linkToRegitryScreen = () => {
-        setIsLogged(true)
+        navigation.navigate("RegistrationScreen")
     }
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
     },
 });
 
-LoginScreen.propTypes = {
-    setIsLogged: PropTypes.func.isRequired
-}
+// LoginScreen.propTypes = {
+//     setIsLogged: PropTypes.func.isRequired
+// }
