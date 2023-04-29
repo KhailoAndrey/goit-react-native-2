@@ -13,7 +13,7 @@ export default function LoginScreen() {
     const mailHandler = (password) => setEmail(password);
 
     const onLogin = () => {
-        if ( password === '' || email === '') {
+        if (password === '' || email === '') {
             return Alert.alert("Все поля должны быть заполнены")
         }
         Alert.alert("Credentials", `${email} + ${password}`);
@@ -30,7 +30,7 @@ export default function LoginScreen() {
                 >
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Войти</Text>
-                    </View>                    
+                    </View>
                     <TextInput
                         value={email}
                         onChangeText={mailHandler}
@@ -45,10 +45,10 @@ export default function LoginScreen() {
                         style={styles.input}
                     />
                     <TouchableOpacity activeOpacity={0.2} style={styles.button}>
-                    <Text style={styles.buttonText} onPress={onLogin}>Войти</Text>
-                                        </TouchableOpacity>
+                        <Text style={styles.buttonText} onPress={onLogin}>Войти</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={linkToRegitryScreen}>
-                    <Text style={styles.linkText}>Нет аккаунта? Зарегистрироваться</Text>
+                        <Text style={styles.linkText}>Нет аккаунта? Зарегистрироваться</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
             </View>

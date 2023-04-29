@@ -18,17 +18,22 @@ export default function App() {
         <StatusBar style="auto" />
         <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
           style={{ width: '100%', height: '100%' }}
-          >
-          <MainStack.Navigator initialRouteName="LoginScreen">
-
-
-            <MainStack.Screen name="RegistrationScreen" component={RegistrationScreen} />
-            <MainStack.Screen name="LoginScreen" component={LoginScreen} />
-
-
-          </MainStack.Navigator>
+        >
+          
         </ImageBackground>
       </View>
+          <MainStack.Navigator initialRouteName="LoginScreen">
+        <MainStack.Screen name="RegistrationScreen"
+          component={RegistrationScreen}
+          options={{ title: 'Регистрация' }} />
+        <MainStack.Screen name="LoginScreen"
+          component={LoginScreen}
+          options={{
+            title: 'Войти',
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 30 },
+          }} />
+          </MainStack.Navigator>
 
     </NavigationContainer>
 
