@@ -9,28 +9,28 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const MainStack = createStackNavigator();
 export default function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  // const [isLogged, setIsLogged] = useState(true);
 
   return (
-<NavigationContainer>
-      
+    <NavigationContainer>
+    
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
-        style={{ width: '100%', height: '100%' }}
-        >
-          <MainStack.Navigator initialRouteName="Login">
+        <StatusBar style="auto" />
+        <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
+          style={{ width: '100%', height: '100%' }}
+          >
+          <MainStack.Navigator initialRouteName="LoginScreen">
 
-        
-          <MainStack.Screen name="Registration" component={RegistrationScreen} />
-          <MainStack.Screen name="Login" component={LoginScreen} />
-        
 
-        </MainStack.Navigator>
-      </ImageBackground>
-    </View>
-        </NavigationContainer>
+            <MainStack.Screen name="RegistrationScreen" component={RegistrationScreen} />
+            <MainStack.Screen name="LoginScreen" component={LoginScreen} />
 
+
+          </MainStack.Navigator>
+        </ImageBackground>
+      </View>
+
+    </NavigationContainer>
 
   );
 }

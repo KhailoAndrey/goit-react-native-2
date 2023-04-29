@@ -1,9 +1,11 @@
 // import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 // import PropTypes from 'prop-types';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
+    const navigation = useNavigation();
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
 

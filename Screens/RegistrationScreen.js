@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
     StyleSheet,
@@ -14,7 +15,9 @@ import {
 } from "react-native";
 // import PropTypes from 'prop-types';
 
-export default function RegistrationScreen({ navigation }) {
+export default function RegistrationScreen() {
+    const navigation = useNavigation();
+
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
