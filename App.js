@@ -1,15 +1,12 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import {
-  ImageBackground, Keyboard, KeyboardAvoidingView, Platform,
-  StyleSheet, Text, TouchableWithoutFeedback, View
-} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import LoginScreen from './Screens/LoginScreen';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home } from './Screens/Home';
+import  Home  from './Screens/Home';
 
 const MainStack = createStackNavigator();
 export default function App() {
@@ -23,7 +20,6 @@ export default function App() {
         <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
           style={{ width: '100%', height: '100%' }}
         >
-
         </ImageBackground>
       </View> */}
       <MainStack.Navigator initialRouteName="LoginScreen">

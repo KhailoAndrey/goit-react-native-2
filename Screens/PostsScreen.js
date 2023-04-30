@@ -1,25 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
 import { View, Text, StyleSheet, Image } from 'react-native'
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from '@expo/vector-icons';
-
-const Tabs = createBottomTabNavigator();
-
-// function Settings() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//       <Text>Settings!</Text>
-//     </View>
-//   );
-// }
-
-// function Profile() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//       <Text>Profile!</Text>
-//     </View>
-//   );
-// }
 
 export default function PostsScreen() {
     <StatusBar style="auto" />
@@ -40,31 +20,9 @@ export default function PostsScreen() {
                     <Text style={styles.userInfoMail}>User e-mail</Text>    
                 </View>
             </View>
-            <View style={ styles.footer}>
-{/* <Tabs.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+            {/* <View style={ styles.footer}>
 
-          if (route.name === "Profile") {
-            iconName = focused
-              ? "ios-information-circle"
-              : "ios-information-circle-outline";
-          } else if (route.name === "Settings") {
-            iconName = focused ? "ios-list-box" : "ios-list";
-          }
-          return <Feather name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: "tomato",
-        inactiveTintColor: "gray",
-      }}
-    >
-      <Tabs.Screen name="ProfileScreen" component={ProfileScreen} />
-      <Tabs.Screen name="CommentsScreen" component={CommentsScreen} />
-    </Tabs.Navigator> */}
-            </View>
+            </View> */}
         </View>
     )
 }
