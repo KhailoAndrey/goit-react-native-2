@@ -12,6 +12,7 @@ import {
     Text,
     TouchableOpacity,
     Image,
+    ImageBackground
 } from "react-native";
 // import PropTypes from 'prop-types';
 
@@ -45,6 +46,9 @@ export default function RegistrationScreen() {
 
     return (
         <TouchableWithoutFeedback onPress={handlePress} >
+            <ImageBackground source={require('./Images/PhotoBG.jpg')}            
+          style={{ width: '100%', height: '100%' }}
+        >
             <View style={styles.container} >
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -85,6 +89,8 @@ export default function RegistrationScreen() {
                         <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
                     </TouchableOpacity>
             </View>
+                                        </ImageBackground>
+
         </TouchableWithoutFeedback>
     );
 }
@@ -106,7 +112,7 @@ const styles = StyleSheet.create({
         height: 25,
         right: -12.5,
         bottom: 14,
-
+        borderRadius: 13,
     },
     title: {
         fontSize: 30,
