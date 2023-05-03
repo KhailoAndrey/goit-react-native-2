@@ -35,7 +35,8 @@ export default function App() {
         
           <MainStack.Screen name="RegistrationScreen"
             component={RegistrationScreen}
-          options={{ title: 'Регистрация' }} />
+          options={{             headerShown: false,
+title: 'Регистрация' }} />
         
         <MainStack.Screen name="Home" component={Home}
           options={{ headerShown: false }} />

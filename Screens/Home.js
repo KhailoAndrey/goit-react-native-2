@@ -53,6 +53,7 @@ const Home = () => {
         >
             <Tabs.Screen name="Posts" component={PostsScreen}
                 options={{
+                    headerStyle: {borderBottomColor: 'rgba(0,0,0,0.3)'},
                     headerTitle: "Публикации",
                     headerTitleAlign: 'center',
                     // headerShown: false,
@@ -66,7 +67,11 @@ const Home = () => {
                     ),
                 }} />
 
-            <Tabs.Screen name="Add" component={CreatePostsScreen} options={{ headerTitle: 'Комментарии' }} />
+            <Tabs.Screen name="Add" component={CreatePostsScreen}
+                options={{
+                    headerTitle: 'Создать публикацию',
+                    tabBarStyle: { display: "none" }
+                        }} />
             <Tabs.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tabs.Navigator>
     </>
