@@ -68,12 +68,12 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     titleBox: {
         marginBottom: 32,
-        marginTop: 32,
+        marginTop: 32,        
     },
     title: {
         fontSize: 30,
         fontWeight: '500',
-        textAlign: 'center'
+        textAlign: 'center',        
     },
     buttonText: {
         textAlign: 'center',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         lineHeight: 19,
         color: '#fff'
     },
-    container: {
+    container: {        
         margin: 0,
         padding: 0,
         borderTopLeftRadius: 25,

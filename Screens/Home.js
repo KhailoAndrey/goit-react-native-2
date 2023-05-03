@@ -1,24 +1,14 @@
-// import { PostsScreen } from "./PostsScreen";
-
-
-// export default function Home() { 
-
-//     return (
-//         <PostsScreen>
-//         </PostsScreen>
-//     )
-// }
-
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons';
 import PostsScreen from "./PostsScreen";
 import ProfileScreen from "./ProfileScreen";
 import CreatePostsScreen from "./CreatePostsScreen";
+import LoginScreen from "./LoginScreen";
 
 
 
@@ -28,7 +18,7 @@ const Tabs = createBottomTabNavigator();
 
 
 const Home = () => {
-  
+    const navigation = useNavigation();
     return (<>
         {/* <PostsScreen>
         </PostsScreen> */}
@@ -44,6 +34,14 @@ const Home = () => {
                         iconName = "user";
                     } else if (route.name === "Add") {
                         iconName = "plus-square";
+
+            //             return (
+            //     <View >
+            //       <TouchableOpacity style={styles.addBtn}>
+            //         <Feather name="plus" size={size} color={'#fff'} />
+            //       </TouchableOpacity>
+            //     </View>
+            //   );
                     }
                     return <Feather name={iconName} size={size} color={color} />;
                 },
@@ -53,8 +51,22 @@ const Home = () => {
                 inactiveTintColor: "gray",
             }}
         >
-            <Tabs.Screen name="Posts" component={PostsScreen} options={{ headerShown: false }} />
-            <Tabs.Screen name="Add" component={CreatePostsScreen} options={{ headerShown: false }} />
+            <Tabs.Screen name="Posts" component={PostsScreen}
+                options={{
+                    headerTitle: "Публикации",
+                    headerTitleAlign: 'center',
+                    // headerShown: false,
+                    headerRight: () => (
+                        <TouchableOpacity
+                            style={{ width: 24, marginRight: 16 }}
+                            onPress={() => navigation.navigate("LoginScreen")}
+                        >
+                            <MaterialIcons name="logout" size={24} color="#BDBDBD" />
+                        </TouchableOpacity>
+                    ),
+                }} />
+
+            <Tabs.Screen name="Add" component={CreatePostsScreen} options={{ headerTitle: 'Комментарии' }} />
             <Tabs.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Tabs.Navigator>
     </>
@@ -67,13 +79,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    // addBtn: {
-    //     width: 70,
-    //     height: 40,
-    //     backgroundColor: '#FF6C00',
-    //     borderRadius: 20,
-
-    // }
+    addBtn: {
+        width: 70,
+        height: 40,
+        backgroundColor: '#FF6C00',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 
 export default Home;

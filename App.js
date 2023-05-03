@@ -28,7 +28,7 @@ export default function App() {
           component={LoginScreen}
           options={{
             headerShown: false,
-            title: 'Войти',
+            // title: 'Войти',
             headerTitleAlign: 'center',
             headerTitleStyle: { fontSize: 30 },
           }} />
