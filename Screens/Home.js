@@ -34,17 +34,9 @@ const Home = () => {
                         iconName = "user";
                     } else if (route.name === "Add") {
                         iconName = "plus-square";
-
-            //             return (
-            //     <View >
-            //       <TouchableOpacity style={styles.addBtn}>
-            //         <Feather name="plus" size={size} color={'#fff'} />
-            //       </TouchableOpacity>
-            //     </View>
-            //   );
                     }
-                    return <Feather name={iconName} size={size} color={color} />;
-                },
+                    return <Feather name={iconName} size={size} color={color} />
+                }
             })}
             tabBarOptions={{
                 activeTintColor: "tomato",
@@ -68,11 +60,14 @@ const Home = () => {
                 }} />
 
             <Tabs.Screen name="Add" component={CreatePostsScreen}
+                // options={{ headerShown: false }}
                 options={{
                     headerTitle: 'Создать публикацию',
-                    tabBarStyle: { display: "none" }
-                        }} />
-            <Tabs.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+                    // tabBarStyle: { display: "none" }
+                }}
+            />
+            <Tabs.Screen name="Profile" component={ProfileScreen}
+                options={{ headerShown: false }} />
         </Tabs.Navigator>
     </>
     );

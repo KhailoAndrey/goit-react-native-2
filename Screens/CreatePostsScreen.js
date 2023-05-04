@@ -10,18 +10,18 @@ export default function CreatePostsScreen() {
                     <MaterialIcons name="camera-alt" size={24} color="#BDBDBD" />
                 </View>
             </View>
+            <View>
             <Text style={styles.photoBoxText}>Загрузите фото</Text>
+            </View>
             <TextInput
                 placeholder="Название..."
                 style={styles.postTitle}
             ></TextInput>
-            <View >
+            <View>
                 <TextInput
                     placeholder="Местность..."
                     style={styles.postLocation}
-                >
-                    {/* <Feather name="map-pin" size={24} color="#BDBDBD" />  */}
-
+                >                    
                 </TextInput>
             </View>
             <View>
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         width: '80%',
         color: '#BDBDBD',
         fontSize: 16,
-        fontWeight: 400,
     },
     postTitle: {
         height: 50,
