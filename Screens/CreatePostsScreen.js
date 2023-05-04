@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         width: '80%',
         color: '#BDBDBD',
         fontSize: 16,
-        // 
+        fontWeight: '400',
     },
     postTitle: {
         height: 50,
