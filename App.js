@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import {ImageBackground, StyleSheet, View} from 'react-native';
-import RegistrationScreen from './Screens/RegistrationScreen';
-import LoginScreen from './Screens/LoginScreen';
+import RegistrationScreen from './Screens/AuthScreen/RegistrationScreen';
+import LoginScreen from './Screens/AuthScreen/LoginScreen';
 // import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';

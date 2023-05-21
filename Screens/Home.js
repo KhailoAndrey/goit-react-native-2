@@ -5,10 +5,10 @@ import { useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons';
-import PostsScreen from "./PostsScreen";
-import ProfileScreen from "./ProfileScreen";
-import CreatePostsScreen from "./CreatePostsScreen";
-import LoginScreen from "./LoginScreen";
+import PostsScreen from "./MainScreen/PostsScreen";
+import ProfileScreen from "./MainScreen/ProfileScreen";
+import CreatePostsScreen from "./MainScreen/CreatePostsScreen";
+import LoginScreen from "./AuthScreen/LoginScreen";
 
 
 

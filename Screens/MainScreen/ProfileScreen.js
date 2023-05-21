@@ -18,18 +18,18 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       {/* <StatusBar style="auto" /> */}
       <ImageBackground
-        source={require('./Images/PhotoBG.jpg')}
+        source={require('../Images/PhotoBG.jpg')}
         style={{ width: '100%', height: '100%' }}
       >
         <View style={styles.profileConteiner}>
           <View style={styles.photo}>
             <Image
               style={styles.avatar}
-              source={require('./Images/JS.jpg')}
+              source={require('../Images/JS.jpg')}
             ></Image>
             <Image
               style={{ ...styles.addPhoto, transform: [{ rotate: '45deg' }] }}
-              source={require('./Images/add.jpg')}
+              source={require('../Images/add.jpg')}
             />
           </View>
           <TouchableOpacity

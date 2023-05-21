@@ -28,7 +28,7 @@ export default function LoginScreen() {
     }
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <ImageBackground source={require('./Images/PhotoBG.jpg')}            
+            <ImageBackground source={require('../Images/PhotoBG.jpg')}            
           style={{ width: '100%', height: '100%' }}
         >
             <View style={styles.container}>

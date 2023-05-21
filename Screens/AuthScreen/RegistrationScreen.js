@@ -46,7 +46,7 @@ export default function RegistrationScreen() {
 
     return (
         <TouchableWithoutFeedback onPress={handlePress} >
-            <ImageBackground source={require('./Images/PhotoBG.jpg')}            
+            <ImageBackground source={require('../Images/PhotoBG.jpg')}            
           style={{ width: '100%', height: '100%' }}
         >
             <View style={styles.container} >
@@ -54,7 +54,7 @@ export default function RegistrationScreen() {
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
                 >
                     <View style={styles.photo} >
-                        <Image style={styles.addPhoto} source={require('./Images/add.jpg')} />
+                        <Image style={styles.addPhoto} source={require('../Images/add.jpg')} />
                     </View>
                     <View style={styles.titleBox}>
                         <Text style={styles.title}>Регистрация</Text>

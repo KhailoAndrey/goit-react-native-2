@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { View, Text, StyleSheet, Image, Touchable, TouchableOpacity } from 'react-native'
-import LoginScreen from './LoginScreen'
+import LoginScreen from '../AuthScreen/LoginScreen'
 import { useNavigation } from "@react-navigation/native";
 
 // const navigation = useNavigation();
@@ -18,7 +18,7 @@ export default function PostsScreen() {
             </View> */}
             <View style={styles.user}>
                 <View>
-                    <Image source={require('./Images/JS.jpg')} style={styles.userImage}></Image>
+                    <Image source={require('../Images/JS.jpg')} style={styles.userImage}></Image>
                 </View>
                 <View style={styles.userInfo}>  
                     <Text style={styles.userInfoText}>User name</Text>    
