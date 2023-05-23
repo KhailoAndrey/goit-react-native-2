@@ -9,10 +9,12 @@ import PostsScreen from "./MainScreen/PostsScreen";
 import ProfileScreen from "./MainScreen/ProfileScreen";
 import CreatePostsScreen from "./MainScreen/CreatePostsScreen";
 import LoginScreen from "./AuthScreen/LoginScreen";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 
 
 const Tabs = createBottomTabNavigator();
+// const Tabs = createMaterialBottomTabNavigator();
 {/* <Ionicons name="grid-outline" size={24} color="black" /> */ }
 {/* <Feather name="user" size={24} color="black" /> */ }
 
@@ -23,11 +25,10 @@ const Home = () => {
         {/* <PostsScreen>
         </PostsScreen> */}
         <Tabs.Navigator
-            initialRouteName="PostsSceen"
+            initialRouteName="Posts"    // тут менять название страницы с какой загружаться Posts, Add, Profile
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-
                     if (route.name === "Posts") {
                         iconName = "grid";
                     } else if (route.name === "Profile") {
@@ -41,6 +42,10 @@ const Home = () => {
             tabBarOptions={{
                 activeTintColor: "tomato",
                 inactiveTintColor: "gray",
+                showLabel: false,
+                // activeBackgroundColor: 'black',
+                hideOnKeyboard: true,                
+
             }}
         >
             <Tabs.Screen name="Posts" component={PostsScreen}
@@ -79,14 +84,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    addBtn: {
-        width: 70,
-        height: 40,
-        backgroundColor: '#FF6C00',
-        borderRadius: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
+    // addBtn: {
+    //     width: 70,
+    //     height: 40,
+    //     backgroundColor: '#FF6C00',
+    //     borderRadius: 20,
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // }
 });
 
 export default Home;

@@ -1,14 +1,19 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { Camera } from "expo-camera";
 
 export default function CreatePostsScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.photoBox}>
-                <View style={styles.photoBoxIcon}>
-                    <MaterialIcons name="camera-alt" size={24} color="#BDBDBD" />
-                </View>
+                <Camera style={styles.camera}>
+                    <TouchableOpacity onPress={() => {}} style={styles.photoBoxIcon}>
+                        {/* <View style={styles.photoBoxIcon}>                             */}
+                            <MaterialIcons name="camera-alt" size={24} color="#BDBDBD" />                            
+                        {/* </View> */}
+                    </TouchableOpacity>                    
+                </Camera>
             </View>
             <View>
             <Text style={styles.photoBoxText}>Загрузите фото</Text>
@@ -63,6 +68,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    camera: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+
     photoBoxText: {
         alignSelf: 'center',
         width: '80%',

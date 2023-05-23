@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import {ImageBackground, StyleSheet, View} from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import RegistrationScreen from './Screens/AuthScreen/RegistrationScreen';
 import LoginScreen from './Screens/AuthScreen/LoginScreen';
 // import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import  Home  from './Screens/Home';
+import Home from './Screens/Home';
 
 const MainStack = createStackNavigator();
 export default function App() {
@@ -14,7 +14,6 @@ export default function App() {
 
   return (
     <NavigationContainer>
-
       {/* <View style={styles.container}>
         <StatusBar style="auto" />
         <ImageBackground source={require('./Screens/Images/PhotoBG.jpg')}
@@ -23,27 +22,30 @@ export default function App() {
         </ImageBackground>
       </View> */}
       <MainStack.Navigator initialRouteName="LoginScreen">
-
-        <MainStack.Screen name="LoginScreen"
+        <MainStack.Screen
+          name="LoginScreen"
           component={LoginScreen}
           options={{
             headerShown: false,
             // title: 'Войти',
             headerTitleAlign: 'center',
             headerTitleStyle: { fontSize: 30 },
-          }} />
-        
-          <MainStack.Screen name="RegistrationScreen"
-            component={RegistrationScreen}
-          options={{             headerShown: false,
-title: 'Регистрация' }} />
-        
-        <MainStack.Screen name="Home" component={Home}
-          options={{ headerShown: false }} />
+          }}
+        />
+
+        <MainStack.Screen
+          name="RegistrationScreen"
+          component={RegistrationScreen}
+          options={{ headerShown: false, title: 'Регистрация' }}
+        />
+
+        <MainStack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
       </MainStack.Navigator>
-
     </NavigationContainer>
-
   );
 }
 const styles = StyleSheet.create({
