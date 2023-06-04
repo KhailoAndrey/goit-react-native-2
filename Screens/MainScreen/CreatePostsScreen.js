@@ -8,14 +8,16 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import { Camera } from 'expo-camera';
+import { Camera, CameraType } from 'expo-camera';
 import React, { useEffect, useState } from 'react';
 import * as MediaLibrary from 'expo-media-library';
-import MapScreen from '../MapScreen';
+import MapScreen from '../nestedScreens/MapScreen';
+import * as Location from 'expo-location';
 
 export default function CreatePostsScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
+  const [type, setType] = useState(CameraType.back);
+  const [isCameraReady, setCameraReady] = useState(false);
 
   const [camera, setCamera] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -24,7 +26,18 @@ export default function CreatePostsScreen({ navigation }) {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       await MediaLibrary.requestPermissionsAsync();
+
       setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
     })();
   }, []);
 
@@ -36,22 +49,30 @@ export default function CreatePostsScreen({ navigation }) {
   }
 
   const takePhoto = async () => {
+    //   if (!isCameraReady) {resumePreview()}
     const picture = await camera.takePictureAsync();
+    const location = await Location.getCurrentPositionAsync();
+    console.log('location', location);
     setPhoto(picture.uri);
   };
 
   const sendPhoto = () => {
-      navigation.navigate('Posts', { photo });
+    navigation.navigate('DefaultScreen', { photo });
     //   setPhoto(null);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.photoBox}>
-        <Camera style={styles.camera} ref={setCamera} type={type}>
+        <Camera
+          style={styles.camera}
+          ref={setCamera}
+          type={type}
+          onCameraReady={() => setCameraReady(true)}
+        >
           {photo && (
             <View style={styles.photoContainer}>
-              <Image source={{ uri: photo }}  />
+              <Image source={{ uri: photo }} />
             </View>
           )}
           <>
@@ -66,21 +87,19 @@ export default function CreatePostsScreen({ navigation }) {
       </View>
       <TextInput placeholder="Название..." style={styles.postTitle}></TextInput>
       <View>
-              {/* <MapScreen /> */}
-                  
         <TouchableOpacity onPress={MapScreen}>
-                  <View>
-                      <Feather
-                  name="map-pin"
-                  size={24}
-                  color={"#BDBDBD"}
-                  style={styles.iconLocation}
-                />
-          <TextInput
-            placeholder="Местность..."
-            style={styles.postLocation}
+          <View>
+            <Feather
+              name="map-pin"
+              size={24}
+              color={'#BDBDBD'}
+              style={styles.iconLocation}
+            />
+            <TextInput
+              placeholder="Местность..."
+              style={styles.postLocation}
             ></TextInput>
-            </View>
+          </View>
         </TouchableOpacity>
       </View>
       <View>
@@ -95,8 +114,6 @@ export default function CreatePostsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: '#fff',
   },
   photoBox: {
@@ -113,10 +130,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginHorizontal: 'auto',
   },
-    photoContainer: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
+  photoContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     height: 240,
     width: 310,
     borderRadius: 10,
@@ -125,7 +142,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-      backgroundColor: '#fff',
+    backgroundColor: '#fff',
     opacity: 0.3,
     alignItems: 'center',
     justifyContent: 'center',
@@ -135,7 +152,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
-      justifyContent: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
   },
   flipContainer: {
@@ -176,9 +193,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 16,
     borderBottomColor: '#E8E8E8',
-      borderBottomWidth: 1,
-        paddingStart: 28,
-
+    borderBottomWidth: 1,
+    paddingStart: 28,
   },
   createPostBtn: {
     marginTop: 32,
@@ -191,10 +207,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     // fontSize: 16,
     // fontWeight: 400,
-    },
+  },
   iconLocation: {
-    position: "absolute",
-      top: 30,
+    position: 'absolute',
+    top: 30,
     left: 38,
   },
 });

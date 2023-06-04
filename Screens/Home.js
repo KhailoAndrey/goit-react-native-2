@@ -10,6 +10,7 @@ import ProfileScreen from "./MainScreen/ProfileScreen";
 import CreatePostsScreen from "./MainScreen/CreatePostsScreen";
 import LoginScreen from "./AuthScreen/LoginScreen";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import DefaultScreenPosts from "./nestedScreens/DefaultScreenPosts";
 
 
 
@@ -26,11 +27,11 @@ const Home = () => {
         {/* <PostsScreen>
         </PostsScreen> */}
         <Tabs.Navigator
-            initialRouteName="Posts"    // тут менять название страницы с какой загружаться Posts, Add, Profile
+            initialRouteName="DefaultScreen"    // тут менять название страницы с какой загружаться Posts, Add, Profile
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === "Posts") {
+                    if (route.name === "DefaultScreen") {
                         iconName = "grid";
                     } else if (route.name === "Profile") {
                         iconName = "user";
@@ -51,7 +52,7 @@ const Home = () => {
 
             }}
         >
-            <Tabs.Screen name="Posts" component={PostsScreen}
+            <Tabs.Screen name="DefaultScreen" component={DefaultScreenPosts}
                 options={{
                     headerStyle: {borderBottomColor: 'rgba(0,0,0,0.3)'},
                     headerTitle: "Публикации",
@@ -71,6 +72,7 @@ const Home = () => {
                 // options={{ headerShown: false }}
                 options={{
                     headerTitle: 'Создать публикацию',
+                    headerTitleAlign: 'center',
                     // tabBarStyle: { display: "none" }
                 }}
             />

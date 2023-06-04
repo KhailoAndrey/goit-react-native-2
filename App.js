@@ -7,6 +7,8 @@ import LoginScreen from './Screens/AuthScreen/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './Screens/Home';
+import MapScreen from './Screens/nestedScreens/MapScreen';
+import CommentsScreen from './Screens/nestedScreens/CommentsScreen';
 
 const MainStack = createStackNavigator();
 export default function App() {
@@ -42,6 +44,16 @@ export default function App() {
         <MainStack.Screen
           name="Home"
           component={Home}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Map"
+          component={MapScreen}
+          options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={CommentsScreen}
           options={{ headerShown: false }}
         />
       </MainStack.Navigator>

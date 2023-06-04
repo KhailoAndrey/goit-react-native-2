@@ -7,7 +7,7 @@ const MapScreen = () => {
     <View style={styles.container}>
       <MapView
         style={styles.mapStyle}
-        region={{
+        initialRegion={{
           latitude: 37.78825,
           longitude: -122.4324,
           latitudeDelta: 0.0922,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
   },
   mapStyle: {
