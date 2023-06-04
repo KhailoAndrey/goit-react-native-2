@@ -13,6 +13,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 
 
 
+
 const Tabs = createBottomTabNavigator();
 // const Tabs = createMaterialBottomTabNavigator();
 {/* <Ionicons name="grid-outline" size={24} color="black" /> */ }
@@ -37,8 +38,10 @@ const Home = () => {
                         iconName = "plus-square";
                     }
                     return <Feather name={iconName} size={size} color={color} />
-                }
-            })}
+                },
+                
+            })
+            }
             tabBarOptions={{
                 activeTintColor: "tomato",
                 inactiveTintColor: "gray",
