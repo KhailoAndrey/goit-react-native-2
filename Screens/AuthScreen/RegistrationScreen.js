@@ -14,26 +14,39 @@ import {
     Image,
     ImageBackground
 } from "react-native";
+import { useDispatch } from 'react-redux'
+import { authSignUpUser } from '../../redux/auth/authOperations';
 // import PropTypes from 'prop-types';
+
+const initialState = {
+  email: "",
+  password: "",
+  name: "",
+};
 
 export default function RegistrationScreen() {
     const navigation = useNavigation();
+  const [state, setstate] = useState(initialState);
 
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("")
+  const dispatch = useDispatch();
 
-    const nameHandler = (name) => setName(name);
-    const passwordHandler = (email) => setPassword(email);
-    const mailHandler = (password) => setEmail(password);
+    // const [name, setName] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [email, setEmail] = useState("")
+
+    const nameHandler = (name) => setstate(prevState => ({...prevState, name: name}));
+    const passwordHandler = (password) => setstate(prevState => ({...prevState, password: password}));
+    const mailHandler = (email) => setstate(prevState => ({...prevState, email: email}));
     const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
     const onLogin = () => {
-        if (name === '' || password === '' || email === '') {
+        if (state.name === '' || state.password === '' || state.email === '') {
             return Alert.alert("Все поля должны быть заполнены")
         }
-        Alert.alert("Credentials", `${name} + ${email} + ${password}`);
-   console.log('name: ', {name})
+        // Alert.alert("Credentials", `${state.name} + ${state.email} + ${state.password}`);
+      // console.log('state: ', state);
+      dispatch(authSignUpUser(state));
+      setstate(initialState);
     };
 
     const linkToLoginScreen = () => {
@@ -61,20 +74,20 @@ export default function RegistrationScreen() {
                     </View>
                     <View>
                         <TextInput
-                            value={name}
+                            value={state.name}
                             onChangeText={nameHandler}
                             placeholder="Логин"
                             style={styles.input}
                             onFocus={() => { setIsShowKeyboard(true) }}
                         />
                         <TextInput
-                            value={email}
+                            value={state.email}
                             onChangeText={mailHandler}
                             placeholder="Адрес электронной почты"
                             style={styles.input}
                         />
                         <TextInput
-                            value={password}
+                            value={state.password}
                             onChangeText={passwordHandler}
                             placeholder="Пароль"
                             secureTextEntry={true}
