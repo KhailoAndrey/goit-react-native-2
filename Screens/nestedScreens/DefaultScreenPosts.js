@@ -4,9 +4,9 @@ import { View, Text, StyleSheet, Image, FlatList, Button } from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 
-// const navigation = useNavigation();
 
 export default function DefaultScreenPosts({ route , navigation }) {
+  // const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
   console.log(route.params);
   useEffect(() => {

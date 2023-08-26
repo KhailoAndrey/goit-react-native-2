@@ -20,7 +20,7 @@ export default function LoginScreen() {
             return Alert.alert("Все поля должны быть заполнены")
         }
         // Alert.alert("Credentials", `${email} + ${password}`);
-        navigation.navigate("Home")
+        navigation.navigate("PostsScreen")
     };
 
     const linkToRegitryScreen = () => {

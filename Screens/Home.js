@@ -27,11 +27,11 @@ const Home = () => {
         {/* <PostsScreen>
         </PostsScreen> */}
         <Tabs.Navigator
-            initialRouteName="DefaultScreen"    // тут менять название страницы с какой загружаться Posts, Add, Profile
+            initialRouteName="Posts"    // тут менять название страницы с какой загружаться Posts, Add, Profile
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === "DefaultScreen") {
+                    if (route.name === "Posts") {
                         iconName = "grid";
                     } else if (route.name === "Profile") {
                         iconName = "user";

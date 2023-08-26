@@ -13,9 +13,9 @@ import CommentsScreen from './Screens/nestedScreens/CommentsScreen';
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import PostsScreen from './Screens/MainScreen/PostsScreen';
 import CreatePostsScreen from './Screens/MainScreen/CreatePostsScreen';
 import ProfileScreen from './Screens/MainScreen/ProfileScreen';
+import PostsScreen from './Screens/MainScreen/PostsScreen';
 
 export const useRoute = isAuth => {
   if (!isAuth) {
