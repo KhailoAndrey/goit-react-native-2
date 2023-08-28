@@ -16,9 +16,12 @@ import { AntDesign } from "@expo/vector-icons";
 import CreatePostsScreen from './Screens/MainScreen/CreatePostsScreen';
 import ProfileScreen from './Screens/MainScreen/ProfileScreen';
 import PostsScreen from './Screens/MainScreen/PostsScreen';
+import { useSelector } from 'react-redux';
 
-export const useRoute = isAuth => {
-  if (!isAuth) {
+export const useRoute = () => {
+    const isLoggedIn = useSelector((state) => state.auth.isAuth);
+
+  if (!isLoggedIn) {
     return (
       <AuthStack.Navigator>
         <AuthStack.Screen

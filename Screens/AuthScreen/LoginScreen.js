@@ -5,12 +5,15 @@ import {
     Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet,
     Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View,ImageBackground
 } from "react-native";
+import { useDispatch } from "react-redux";
 // import PropTypes from 'prop-types';
 
 export default function LoginScreen() {
     const navigation = useNavigation();
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("")
+      const dispatch = useDispatch();
+
 
     const passwordHandler = (email) => setPassword(email);
     const mailHandler = (password) => setEmail(password);
@@ -20,6 +23,8 @@ export default function LoginScreen() {
             return Alert.alert("Все поля должны быть заполнены")
         }
         // Alert.alert("Credentials", `${email} + ${password}`);
+        dispatch(setAuthStatus(true));
+
         navigation.navigate("PostsScreen")
     };
 
